@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Timetable Creation Form</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f4f7f8;
+    margin: 0;
+    padding: 20px;
+  }
+
+  .container {
+    max-width: 700px;
+    background: #fff;
+    margin: 0 auto;
+    border-radius: 8px;
+    padding: 20px 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    text-align: center;
+    color: #333;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  label {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #666;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="time"] {
+    margin-top: 6px;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+
+  .day-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 6px;
+  }
+
+  .day-checkboxes label {
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+  }
+
+  input[type="checkbox"] {
+    margin-right: 8px;
+  }
+
+  .day-time-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .day-time-group label {
+    font-weight: normal;
+    margin: 0;
+    flex: 1;
+  }
+
+  .day-time-group input[type="time"] {
+    flex: 1;
+  }
+
+  button {
+    margin-top: 25px;
+    padding: 10px;
+    background: #007bff;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  button:hover {
+    background: #0056b3;
+  }
+
+  .subjects-list {
+    margin-top: 10px;
+  }
+
+  .subjects-list label {
+    margin-top: 10px;
+    font-weight: normal;
+    display: block;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2>Create Your Timetable</h2>
+    <form>
+
+      <label for="roll-number">Roll Number</label>
+      <input type="text" id="roll-number" name="roll-number" placeholder="Enter your roll number" required />
+
+      <label for="student-name">Student Name</label>
+      <input type="text" id="student-name" name="student-name" placeholder="Enter your name" required />
+
+      <label for="course">Course/Subject</label>
+      <input type="text" id="course" name="course" placeholder="Enter course or subject" required />
+
+      <label for="major-subjects">Number of Major Subjects</label>
+      <input type="number" id="major-subjects" name="major-subjects" min="0" placeholder="e.g. 3" required />
+
+      <div id="major-subject-names" class="subjects-list"></div>
+
+      <label for="minor-subjects">Number of Minor Subjects</label>
+      <input type="number" id="minor-subjects" name="minor-subjects" min="0" placeholder="e.g. 2" required />
+
+      <div id="minor-subject-names" class="subjects-list"></div>
+
+      <label for="optional-subjects">Optional Subjects (comma separated)</label>
+      <input type="text" id="optional-subjects" name="optional-subjects" placeholder="Enter optional subjects" />
+
+      <label>Working Days</label>
+      <div class="day-checkboxes">
+        <label><input type="checkbox" name="working-days" value="Monday" checked /> Monday</label>
+        <label><input type="checkbox" name="working-days" value="Tuesday" checked /> Tuesday</label>
+        <label><input type="checkbox" name="working-days" value="Wednesday" checked /> Wednesday</label>
+        <label><input type="checkbox" name="working-days" value="Thursday" checked /> Thursday</label>
+        <label><input type="checkbox" name="working-days" value="Friday" checked /> Friday</label>
+        <label><input type="checkbox" name="working-days" value="Saturday" /> Saturday</label>
+        <label><input type="checkbox" name="working-days" value="Sunday" /> Sunday</label>
+      </div>
+
+      <label for="class-duration">Duration of One Class (minutes)</label>
+      <input type="number" id="class-duration" name="class-duration" min="1" placeholder="e.g. 45" required />
+
+      <label for="lunch-duration">Duration of Lunch Break (minutes)</label>
+      <input type="number" id="lunch-duration" name="lunch-duration" min="0" placeholder="e.g. 30" required />
+
+      <label>Timetable (Enter start and end time for each day)</label>
+
+      <div class="day-time-group">
+        <label for="monday-start">Monday:</label>
+        <input type="time" id="monday-start" name="monday-start" /> to
+        <input type="time" id="monday-end" name="monday-end" />
+      </div>
+
+      <div class="day-time-group">
+        <label for="tuesday-start">Tuesday:</label>
+        <input type="time" id="tuesday-start" name="tuesday-start" /> to
+        <input type="time" id="tuesday-end" name="tuesday-end" />
+      </div>
+
+      <div class="day-time-group">
+        <label for="wednesday-start">Wednesday:</label>
+        <input type="time" id="wednesday-start" name="wednesday-start" /> to
+        <input type="time" id="wednesday-end" name="wednesday-end" />
+      </div>
+
+      <div class="day-time-group">
+        <label for="thursday-start">Thursday:</label>
+        <input type="time" id="thursday-start" name="thursday-start" /> to
+        <input type="time" id="thursday-end" name="thursday-end" />
+      </div>
+
+      <div class="day-time-group">
+        <label for="friday-start">Friday:</label>
+        <input type="time" id="friday-start" name="friday-start" /> to
+        <input type="time" id="friday-end" name="friday-end" />
+      </div>
+
+      <div class="day-time-group">
+        <label for="saturday-start">Saturday:</label>
+        <input type="time" id="saturday-start" name="saturday-start" /> to
+        <input type="time" id="saturday-end" name="saturday-end" />
+      </div>
+
+      <div class="day-time-group">
+        <label for="sunday-start">Sunday:</label>
+        <input type="time" id="sunday-start" name="sunday-start" /> to
+        <input type="time" id="sunday-end" name="sunday-end" />
+      </div>
+
+      <button type="submit">Create Timetable</button>
+    </form>
+  </div>
+
+<script>
+  function createSubjectInputs(containerId, count) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = '';
+    for (let i = 1; i <= count; i++) {
+      const label = document.createElement('label');
+      label.textContent = `Subject ${i} Name:`;
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.name = containerId + `-subject-${i}`;
+      input.placeholder = `Enter name of subject ${i}`;
+      input.required = true;
+      input.style.marginTop = '5px';
+      input.style.width = '100%';
+      container.appendChild(label);
+      container.appendChild(input);
+    }
+  }
+
+  document.getElementById('major-subjects').addEventListener('input', function() {
+    let val = parseInt(this.value);
+    if (isNaN(val) || val < 0) val = 0;
+    createSubjectInputs('major-subject-names', val);
+  });
+
+  document.getElementById('minor-subjects').addEventListener('input', function() {
+    let val = parseInt(this.value);
+    if (isNaN(val) || val < 0) val = 0;
+    createSubjectInputs('minor-subject-names', val);
+  });
+</script>
+</body>
+</html>
