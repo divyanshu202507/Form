@@ -354,5 +354,58 @@
           createSubjectInputs("minor-subject-names", val);
         });
     </script>
+    <script>
+  const form = document.querySelector("form");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault(); 
+
+    const workingDays = Array.from(document.querySelectorAll('input[name="working-days"]:checked'))
+      .map(cb => cb.value);
+
+    const optionalSubjects = document.getElementById("optional-subjects").value
+      .split(",")
+      .map(s => s.trim())
+      .filter(s => s);
+
+    const timetable = {
+      Monday: { start: form["monday-start"].value, end: form["monday-end"].value },
+      Tuesday: { start: form["tuesday-start"].value, end: form["tuesday-end"].value },
+      Wednesday: { start: form["wednesday-start"].value, end: form["wednesday-end"].value },
+      Thursday: { start: form["thursday-start"].value, end: form["thursday-end"].value },
+      Friday: { start: form["friday-start"].value, end: form["friday-end"].value },
+      Saturday: { start: form["saturday-start"].value, end: form["saturday-end"].value },
+      Sunday: { start: form["sunday-start"].value, end: form["sunday-end"].value },
+    };
+
+    const data = {
+      rollNumber: form["roll-number"].value,
+      studentName: form["student-name"].value,
+      course: form["course"].value,
+      majorSubjects: parseInt(form["major-subjects"].value) || 0,
+      minorSubjects: parseInt(form["minor-subjects"].value) || 0,
+      optionalSubjects,
+      workingDays,
+      classDuration: parseInt(form["class-duration"].value) || 0,
+      lunchBreak: parseInt(form["lunch-duration"].value) || 0,
+      timetable
+    };
+
+    try {
+      const res = await fetch("http://localhost:5000/api/timetable/create", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const result = await res.json();
+      alert(result.message || "Timetable saved!");
+      form.reset();
+    } catch (err) {
+      console.error("Error:", err);
+      alert("Failed to save timetable");
+    }
+  });
+</script>
   </body>
 </html>
