@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+
+      nav h1{
+        text-align: center;
+        font-size: 50px;
+        font-weight: 900;
+      }
+    table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ffffff;
+  user-select: none;
+  cursor: default;
+}
+
+thead th {
+  background: linear-gradient(90deg, #4aa0df, #43c6ac);
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 12px 18px;
+  font-size: 14px;
+  border-bottom: 2px solid rgba(0,0,0,0.1);
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #f3faff;
+}
+
+tbody tr:hover {
+  background-color: #d0e9ff;
+  transition: background-color 0.3s ease;
+}
+
+thead th:first-child {
+  border-top-left-radius: 12px;
+}
+
+thead th:last-child {
+  border-top-right-radius: 12px;
+}
+
+tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 12px;
+}
+
+tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 12px;
+}
+
+tbody td, tbody th {
+  padding: 14px 18px;
+  color: #233142;
+  border-right: 1px solid rgba(0,0,0,0.05);
+  font-weight: 500;
+}
+
+tbody td:last-child, tbody th:last-child {
+  border-right: none;
+}
+
+tbody th {
+  background-color: #e5f0ff;
+  font-weight: 600;
+  text-align: left;
+  color: #2a475e;
+  border-right: 2px solid #43c6ac;
+  white-space: nowrap;
+  width: 140px;
+}
+
+tbody td {
+  text-align: center;
+}
+
+tbody td.empty {
+  color: #a1a1a1;
+  font-style: italic;
+}
+
+tbody td.highlight {
+  background-color: #43c6ac;
+  color: white;
+  font-weight: 700;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(67,198,172,0.4);
+}
+
+@media screen and (max-width: 768px) {
+  table {
+    font-size: 12px;
+  }
+  tbody th {
+    width: 100px;
+  }
+}
+
+
+    </style>
+  </head>
+  <body>
+
+
+    <nav>
+      <h1>Planora.ai</h1>
+    </nav>
+    <table
+      border="1"
+      cellpadding="8"
+      cellspacing="0"
+      style="border-collapse: collapse; width: 100%"
+    >
+      <thead>
+        <tr>
+          <th>Time / Day</th>
+          <th>Monday</th>
+          <th>Tuesday</th>
+          <th>Wednesday</th>
+          <th>Thursday</th>
+          <th>Friday</th>
+          <th>Saturday</th>
+          <th>Sunday</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>09:00 - 10:00</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>10:00 - 11:00</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>11:00 - 12:00</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>12:00 - 13:00</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>13:00 - 14:00</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>14:00 - 15:00</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>15:00 - 16:00</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <script src="output.js"></script>
+  </body>
+</html>

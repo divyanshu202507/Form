@@ -30,14 +30,19 @@ app.post('/api/timetable/create', async (req, res) => {
   }
 });
 
-app.get('/api/timetable', async (req, res) => {
+app.get('/api/timetable/:rollNumber', async (req, res) => {
   try {
-    const timetables = await Timetable.find();
-    res.json(timetables);
+    const { rollNumber } = req.params;
+    const timetable = await Timetable.findOne({ rollNumber });
+    if (!timetable) {
+      return res.status(404).json({ message: "Timetable not found" });
+    }
+    res.json(timetable);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
+
 
 app.listen(5000, () => {
   console.log(`Server running at http://localhost:${5000}`);
